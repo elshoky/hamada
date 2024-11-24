@@ -44,11 +44,18 @@ pipeline {
         stage('Deploy Application') {
             steps {
                 script {
-                    // Run the Docker container
-                    sh '''
-                        #!/bin/bash
-                        docker run -d --name nodejs-app -p 3030:3000 elshoky/nodjs-app:${BUILD_NUMBER}
-                    '''
+                    // Use the SSH key to connect to the EC2 instance and deploy the Docker container
+                    withCredentials([file(credentialsId: 'ssh-key-ec2', variable: 'SSH_KEY')]) {
+                        sh '''
+                            #!/bin/bash
+                            # Make sure the private key has the correct permissions
+                            chmod 400 $SSH_KEY 
+                            # Connect to EC2 via SSH and run the Docker container
+                            ssh -i $SSH_KEY -o StrictHostKeyChecking=no ec2-user@ec2-52-73-65-200.compute-1.amazonaws.com << 'EOF'
+                                docker run -d --name nodejs-app -p 3030:3000 elshoky/nodjs-app:${BUILD_NUMBER}
+                            EOF
+                        '''
+                    }
                 }
             }
         }
