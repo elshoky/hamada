@@ -12,7 +12,7 @@ pipeline {
                     // Use bash explicitly for compatibility
                     sh '''
                         #!/bin/bash
-                        docker build -t elshoky/app:${BUILD_NUMBER} .
+                        docker build -t elshoky/nodjs-app:${BUILD_NUMBER} .
                     '''
                 }
             }
@@ -36,7 +36,7 @@ pipeline {
                     // Push the Docker image
                     sh '''
                         #!/bin/bash
-                        docker push elshoky/app:${BUILD_NUMBER}
+                        docker push elshoky/nodjs-app:${BUILD_NUMBER}
                     '''
                 }
             }
