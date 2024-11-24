@@ -41,6 +41,17 @@ pipeline {
                 }
             }
         }
+        stage('Deploy Application') {
+            steps {
+                script {
+                    // Run the Docker container
+                    sh '''
+                        #!/bin/bash
+                        docker run -d --name nodejs-app -p 3030:3000 elshoky/nodjs-app:${BUILD_NUMBER}
+                    '''
+                }
+            }
+        }
     }
     post {
         success {
