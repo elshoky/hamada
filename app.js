@@ -8,7 +8,7 @@ const PORT = 3000;
 const server = http.createServer((req, res) => {
   res.statusCode = 200; // Set the HTTP status code
   res.setHeader('Content-Type', 'text/plain'); // Set the content type
-  res.end('Hello, Node.js!\n'); // Send a response
+  res.end('Hello, From Elshoky-Website!\n'); // Send a response
 });
 
 // Start the server and listen on the specified port
