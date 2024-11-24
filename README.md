@@ -10,6 +10,7 @@ This project is a Jenkins pipeline setup that automates the process of building,
 5. [Setup Instructions](#setup-instructions)
 6. [Jenkins Configuration](#jenkins-configuration)
 7. [Troubleshooting](#troubleshooting)
+8. [Screenshot](#screenshot)
 
 ## Overview
 This Jenkins pipeline automates the following tasks:
@@ -78,7 +79,12 @@ Ensure that the Docker Hub credentials are correctly set in Jenkins. Check the c
 ### SSH Connection Failures
 Verify the SSH credentials (`ssh-key-ec2`) and the EC2 instance's security group settings to ensure proper SSH access.
 
+## Screenshot
+
+Here is a screenshot of the application:
+
+![Application Screenshot](https://github.com/elshoky/hamada/blob/main/Capture.PNG)
+
 ---
 
 For any further questions or issues, feel free to open an issue in the repository.
-
