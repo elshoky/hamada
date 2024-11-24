@@ -54,7 +54,10 @@ pipeline {
                             echo "Docker image: elshoky/nodjs-app:${BUILD_NUMBER}"
         
                             # Connect to EC2 via SSH and run the Docker container
-                            ssh -i $SSH_KEY -o StrictHostKeyChecking=no ec2-user@ec2-52-73-65-200.compute-1.amazonaws.com "docker run -d  -p 3036:3000 elshoky/nodjs-app:${BUILD_NUMBER}"
+                            ssh -i $SSH_KEY -o StrictHostKeyChecking=no ec2-user@ec2-52-73-65-200.compute-1.amazonaws.com "
+                            docker stop elshoky-app
+                            docker rm elshoky-app
+                            docker run -d --name elshoky-app  -p 3037:3000 elshoky/nodjs-app:${BUILD_NUMBER}"
                             docker container prune -f
                         '''
                     }
